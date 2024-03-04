@@ -1,0 +1,18 @@
+  .social{
+  @apply w-6 h-6 bg-[#27749C] flex items-center justify-center rounded-full;
+}
+.marginContainer {
+  padding-block: 18px;
+  @apply  xl:w-[1170px] xl:mx-auto mx-[20px] sm:mx-[30px] md:mx-[40px] ;
+
+}
+.wrapper {
+  @apply flex justify-between items-center flex-col mb:flex-row ;
+}
+.socialWrapper {
+
+  .social {
+    @apply mr-3 last:mr-0;
+  }
+  @apply flex order-1 mb:order-2
+}

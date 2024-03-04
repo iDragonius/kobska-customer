@@ -1,0 +1,23 @@
+.languageContainer {
+  @apply cursor-pointer flex items-center bg-iconBg h-max py-[5.5px] px-[7px] rounded-[50px] relative;
+
+  .languageWrapper{
+    @apply  h-6 w-[50px] flex ;
+    .language{
+      @apply ml-1 text-[16px];
+    }
+  }
+
+}
+
+.homeLanguageContainer {
+  @apply cursor-pointer border border-white flex items-center bg-transparent h-max py-[5.5px] px-[7px] rounded-[50px] relative;
+
+  .languageWrapper{
+    @apply  h-6 w-[50px] flex ;
+    .language{
+      @apply ml-1 text-white text-[16px];
+    }
+  }
+
+}

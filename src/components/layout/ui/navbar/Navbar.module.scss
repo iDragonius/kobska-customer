@@ -1,0 +1,55 @@
+.main {
+  @apply flex border-b border-borderGray hidden mb:block ;
+  .wrapper {
+    @apply flex  items-center xl:w-[1170px] xl:mx-auto mx-[20px] sm:mx-[30px] md:mx-[40px];
+
+    .navigationHead {
+      @apply mr-6  cursor-pointer relative flex items-center border-b border-b-transparent hover:border-b-hoverColor transition-all ease-in-out;
+      padding-block: 14px;
+      .navigationLabel {
+        @apply text-black text-lg w-max;
+      }
+
+    }
+    .navigationHead:hover .drop {
+      @apply stroke-hoverColor
+    }
+    .navigationHead:hover .navigationLabel {
+      @apply text-newsText;
+    }
+  }
+}
+
+.homeNavigationLabel {
+  @apply  text-white text-lg w-max
+}
+.drop {
+  @apply stroke-black stroke-[2px]  ;
+  width: 12px;
+  height: 6px;
+  margin-left: 10px
+}
+.forward {
+  @apply absolute stroke-[#65348D] hidden ;
+}
+.navigationLink {
+  @apply relative flex items-center;
+}
+.navigationLink:hover {
+  .forward {
+    @apply block
+  }
+  .navbarElement {
+    @apply text-navigationHover translate-x-5
+  }
+
+}
+.homeDrop {
+  @apply stroke-white stroke-[2px]  ;
+  width: 12px;
+  height: 6px;
+  margin-left: 10px
+}
+.navbarElement {
+   @apply w-full text-link  py-2  text-navigationText  transition hover:underline;
+}

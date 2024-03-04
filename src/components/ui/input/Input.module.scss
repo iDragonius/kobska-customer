@@ -1,0 +1,61 @@
+.textInput {
+  @apply py-3 text-black font-medium placeholder:font-medium text-base outline-none  focus:border-b-[#27749C] focus:text-[#27749C] focus:placeholder:text-[#27749C] hover:border-b-[#27749C] hover:text-[#27749C]   hover:placeholder:text-[#27749C] transition-all ease-in-out;
+  max-height: 45px;
+  line-height: 20px;
+
+}
+
+.textareaInput {
+  @apply py-3 px-3 text-black font-medium placeholder:font-medium placeholder:text-[#9CA3AF] text-base outline-none  focus:border-[#27749C] focus:text-[#27749C] focus:placeholder:text-[#27749C] hover:border-[#27749C] hover:text-[#27749C]   hover:placeholder:text-[#27749C] transition-all ease-in-out;
+  line-height: 20px;
+  border: 1px  solid #D1D5DB;
+resize: none;
+  height: 180px;
+
+}
+
+.phoneBlock {
+  max-height: 45px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  transition: all ease-in-out ;
+  display: flex;
+  position: relative;
+  align-items: center;
+  .phoneLabel {
+    position: absolute;
+    color: #9CA3AF;
+    line-height: 20px;
+
+  }
+  .phoneInput {
+    color:#000;
+
+    width: 100%;
+    padding-block: 12px;
+    outline: none;
+    transition: all ease-in-out ;
+    padding-left: 45px;
+
+  }
+
+
+  :focus::placeholder, :hover::placeholder {
+    color: #27749C;
+
+  }
+  ::placeholder{
+    font-weight: 500;
+    color: #9CA3AF;
+  }
+
+}
+.phoneInput:focus + .phoneLabel,
+.phoneInput:hover + .phoneLabel, {
+  color: #27749C;
+}
+.phoneInput:hover, .phoneInput:focus {
+  color: #27749C;
+  border-bottom-color: #27749C;
+}

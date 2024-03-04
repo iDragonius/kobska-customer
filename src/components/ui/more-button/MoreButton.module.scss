@@ -1,0 +1,19 @@
+.button {
+  @apply
+    text-md
+  border
+  border-black
+  items-center
+  hover:bg-hoverColor
+    hover:text-white
+    hover:border-white
+    transition-all
+    ease-in-out
+
+  ;
+  padding: 6.5px 17.5px;
+  border-radius: 50px;
+  height: max-content;
+  min-width: max-content;
+  box-sizing: content-box;
+}

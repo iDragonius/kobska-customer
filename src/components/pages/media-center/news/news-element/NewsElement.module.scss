@@ -1,0 +1,33 @@
+.block {
+  width: calc(33% - 20px);
+}
+.newsBlock {
+  @apply w-full ;
+}
+.newsBlockContent{
+  @apply p-5 border border-[#EEEEEE]  transition-all ease-in-out h-[calc(100%-283px)] flex flex-col justify-between;
+}
+.newsBlockContentHeader {
+  @apply font-medium text-lg text-newsText mb-5;
+}
+.newsBlockContentWrapper {
+  @apply flex justify-between items-center;
+}
+.newsType {
+  @apply text-[12px] font-medium text-[#454161] py-[5px] px-[10px] bg-[#F4F4F4] w-max rounded-[2px];
+}
+.date{
+  @apply font-medium text-base text-[#A0A0A0];
+}
+.newsBlock:hover {
+  & .newsBlockContent {
+    @apply border-[#27749C];
+  }
+}
+.content {
+  @apply text-secondaryText text-base mb-8;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}

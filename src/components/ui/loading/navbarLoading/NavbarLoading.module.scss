@@ -1,0 +1,10 @@
+.main {
+  @apply border-y border-borderGray;
+  .wrapper {
+    @apply flex py-[14px] xl:w-[1170px] xl:mx-auto mx-[65px];
+    .element {
+      @apply block  h-7 animate-pulse mb:w-28 w-3 bg-loadingBg opacity-10 rounded mr-6;
+    }
+  }
+}
+

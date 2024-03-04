@@ -1,0 +1,27 @@
+.button {
+    font-size: 16px;
+  line-height: 20px;
+  padding: 6.5px 60px;
+}
+
+.primary {
+  border: 1px solid #27749C ;
+  color: #27749C;
+  background-color:transparent;
+  transition: all ease-in-out 100ms;
+  &:hover,  &:focus{
+    background-color: #27749C ;
+    color: #fff;
+  }
+
+}
+.contact {
+  border: 1px solid #1D9698 ;
+  color: #1D9698;
+  background-color:transparent;
+  transition: all ease-in-out 100ms;
+  &:hover,  &:focus{
+    background-color: #1D9698 ;
+    color: #fff;
+  }
+}

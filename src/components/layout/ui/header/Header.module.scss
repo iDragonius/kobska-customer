@@ -1,0 +1,15 @@
+.main {
+  @apply py-[10px]   border-b border-borderGray;
+}
+
+
+.wrapper{
+  @apply flex items-center;
+}
+.breadcrumb {
+  @apply w-[1px] h-10 bg-iconBg mr-[14px];
+}
+
+.marginContainer {
+  @apply flex justify-between items-center  xl:w-[1170px] xl:mx-auto mx-[20px] sm:mx-[30px] md:mx-[40px] ;
+}

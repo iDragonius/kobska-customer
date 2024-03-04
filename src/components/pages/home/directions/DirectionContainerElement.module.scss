@@ -1,0 +1,43 @@
+.block {
+  @apply flex-col  justify-between lg:w-full   p-5 border-2 border-blockBorder hover:bg-hoverColor transition-all ease-in-out;
+
+}
+.title {
+  @apply text-xl  font-medium;
+  line-height: 32px;
+  min-height: 64px;
+}
+.content {
+  @apply my-3 text-secondaryText text-base;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.block:hover,
+.block:focus {
+  .title {
+    @apply text-white;
+  }
+  .content {
+    @apply text-white;
+  }
+  .icon {
+    @apply translate-x-3 stroke-white;
+  }
+  .link {
+    @apply text-white;
+  }
+}
+
+.linkWrapper {
+  @apply flex items-center text-base  cursor-pointer;
+}
+
+.link {
+  @apply text-white mr-[10px] text-linkText;
+}
+.icon {
+  @apply transition-all ease-in-out;
+  stroke: #d2d2d2;
+}

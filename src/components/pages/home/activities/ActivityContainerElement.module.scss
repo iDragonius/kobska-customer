@@ -1,0 +1,19 @@
+.content {
+  @apply text-base text-[#4D4D4D] mb-8;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.activity{
+  .blockContent{
+
+    @apply w-full border border-[#EEEEEE] p-5 transition-all ease-in-out;
+  }
+  &:hover{
+    .blockContent{
+      @apply border-[#27749C]
+    }
+  }
+}

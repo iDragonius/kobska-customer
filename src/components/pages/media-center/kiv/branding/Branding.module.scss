@@ -1,0 +1,15 @@
+.button {
+  @apply w-full flex justify-between bg-[#EEEEEE] py-2 px-4 mt-9 hover:bg-[#27749C] transition-all ease-in-out cursor-pointer;
+  .downloadText{
+    @apply text-black font-medium;
+  }
+  &:hover{
+    .download{
+      stroke:#fff;
+    }
+    .downloadText{
+      color:#fff
+    }
+  }
+}
+

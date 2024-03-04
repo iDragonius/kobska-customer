@@ -1,0 +1,19 @@
+.wrapper {
+  @apply flex items-center text-base  cursor-pointer ;
+}
+
+.link{
+  @apply text-white mr-[10px] text-linkText;
+}
+.icon {
+  @apply transition-all ease-in-out;
+  stroke:#D2D2D2
+}
+.wrapper:hover  {
+  .icon {
+    @apply translate-x-3 stroke-white;
+  }
+  .link{
+    @apply text-white
+  }
+}
