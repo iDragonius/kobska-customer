@@ -22,7 +22,7 @@ const NewsElement = ({ data }: INewsElement) => {
     >
       <div
         className={
-          'max-h-[283px] h-full w-full border flex items-center justify-center p-1'
+          'h-[283px]  w-full border flex items-center justify-center p-1'
         }
       >
         <Image

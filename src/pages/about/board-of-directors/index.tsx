@@ -9,6 +9,7 @@ import DirectorElement from '@/components/pages/about/boardOfDirector/director-e
 import { useTranslation } from 'next-i18next'
 import { LanguagesQueryEnum } from '@/config'
 import Head from 'next/head'
+import { GetServerSideProps } from 'next'
 
 export interface IBoardOfDirectors {
   data: IBoardOfDirectorsQuery
@@ -32,18 +33,22 @@ function BoardOfDirectorsPage({ data }: IBoardOfDirectors) {
   )
 }
 
-export const getServerSideProps = async ({ locale }: { locale: string }) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   const apolloClient = initializeApollo()
   const res = await apolloClient.query({
     query: BoardOfDirectorsQuery,
     variables: {
-      locale: LanguagesQueryEnum[locale as keyof typeof LanguagesQueryEnum]
+      locale:
+        LanguagesQueryEnum[context.locale as keyof typeof LanguagesQueryEnum],
+      year: context.query.year ? +context.query.year : 2024
     }
   })
   return {
     props: {
       data: res.data,
-      ...(await serverSideTranslations(locale, ['about']))
+      ...(await serverSideTranslations(context.locale || 'az-Cyrl-AZ', [
+        'about'
+      ]))
     }
   }
 }

@@ -10,13 +10,16 @@ export interface StructureElementProps {
 const StructureElement: FC<StructureElementProps> = ({ data }) => {
   return (
     <Link href={`/about/structure/${data.id}`} className={'mb-5'}>
-      <Image
-        src={process.env.SERVER_URL + data.image.data.attributes.url}
-        alt={data.image.data.attributes.alternativeText}
-        width={data.image.data.attributes.width}
-        height={data.image.data.attributes.height}
-        className={'w-[377px] h-[283px] object-cover'}
-      />
+      {data.image.data && (
+        <Image
+          src={process.env.SERVER_URL + data.image.data.attributes.url}
+          alt={data.image.data.attributes.alternativeText}
+          width={data.image.data.attributes.width}
+          height={data.image.data.attributes.height}
+          className={'w-[377px] h-[283px] object-cover'}
+        />
+      )}
+
       <h2 className={'mt-4 text-[16px] text-[#111827] font-medium leading-6'}>
         {data.fullName}
       </h2>
