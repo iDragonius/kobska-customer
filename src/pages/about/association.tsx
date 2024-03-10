@@ -128,7 +128,7 @@ function Association({ data }: IAssociation) {
               </div>
               <Document
                 className={'border'}
-                file='http://localhost:1337/uploads/test1_aa2ba1fc74.pdf'
+                file='https://admin.kobska.az/uploads/test1_aa2ba1fc74.pdf'
                 onLoadSuccess={onDocumentLoadSuccess}
                 renderMode='canvas'
                 options={options}

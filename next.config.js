@@ -5,10 +5,10 @@ const nextConfig = {
   env: {
     // SERVER_URL_GRAPHQL: 'http://192.168.202.52:1337/graphql',
     // SERVER_URL: 'http://192.168.202.52:1337'
-    // SERVER_URL_GRAPHQL: 'https://admin.kobska.az/graphql',
-    // SERVER_URL: 'https://admin.kobska.az',
-    SERVER_URL_GRAPHQL: 'http://localhost:1337/graphql',
-    SERVER_URL: 'http://localhost:1337',
+    SERVER_URL_GRAPHQL: 'https://admin.kobska.az/graphql',
+    SERVER_URL: 'https://admin.kobska.az',
+    // SERVER_URL_GRAPHQL: 'http://localhost:1337/graphql',
+    // SERVER_URL: 'http://localhost:1337',
     CLIENT_URL: 'https://kobska.az',
     LANGUAGE_MODE: 'mono'
   },
