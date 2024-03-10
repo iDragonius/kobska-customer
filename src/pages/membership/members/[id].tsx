@@ -84,12 +84,14 @@ const MemberPage: FC<MemberPageProps> = ({ data }) => {
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const apolloClient = initializeApollo()
+  const idFromUrl = (context.query.id as string)?.split('-').at(-1) as string
+
   const res = await apolloClient.query({
     query: MemberByIdQuery,
     variables: {
       locale:
         LanguagesQueryEnum[context.locale as keyof typeof LanguagesQueryEnum],
-      id: context.query.id
+      id: idFromUrl
     }
   })
 

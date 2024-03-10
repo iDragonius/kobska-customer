@@ -1,14 +1,15 @@
-import { DirectorProps } from '@/lib/graphql/queries/board-of-directors.query'
+import React, { FC } from 'react'
+import { StructureProps } from '@/lib/graphql/queries/structure.query'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export interface IDirectorElement {
-  data: DirectorProps
+export interface StructureElementProps {
+  data: StructureProps
 }
 
-function DirectorElement({ data }: IDirectorElement) {
+const StructureElement: FC<StructureElementProps> = ({ data }) => {
   return (
-    <Link href={`/about/board-of-directors/${data.id}`} className={'mb-5'}>
+    <Link href={`/about/structure/${data.id}`} className={'mb-5'}>
       <Image
         src={process.env.SERVER_URL + data.image.data.attributes.url}
         alt={data.image.data.attributes.alternativeText}
@@ -17,11 +18,11 @@ function DirectorElement({ data }: IDirectorElement) {
         className={'w-[377px] h-[283px] object-cover'}
       />
       <h2 className={'mt-4 text-[16px] text-[#111827] font-medium leading-6'}>
-        {data.name}
+        {data.fullName}
       </h2>
       <p className={'text-[#6B7280] text-base leading-5'}>{data.position} </p>
     </Link>
   )
 }
 
-export default DirectorElement
+export default StructureElement

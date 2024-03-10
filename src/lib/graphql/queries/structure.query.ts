@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
-export type DirectorProps = {
-  name: string
+export type StructureProps = {
+  fullName: string
   position: string
   id: number
   image: {
@@ -33,23 +33,23 @@ export type DirectorProps = {
     }
   }
 }
-export interface IBoardOfDirectorsQuery {
-  boardOfDirector: {
+export interface IStructureQuery {
+  structure: {
     data: {
       attributes: {
-        directors: DirectorProps[]
+        members: StructureProps[]
       }
     }
   }
 }
-export const BoardOfDirectorsQuery = gql`
-  query ($locale: I18NLocaleCode!) {
-    boardOfDirector(locale: $locale) {
+export const StructureQuery = gql`
+  query ($locale: I18NLocaleCode!, $year: Int!) {
+    structure(locale: $locale) {
       data {
         attributes {
-          directors {
-            ... on ComponentAboutDirector {
-              name
+          members(filters: { year: { eq: $year } }) {
+            ... on ComponentAboutStructures {
+              fullName
               position
               id
               description

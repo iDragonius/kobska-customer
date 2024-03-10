@@ -17,6 +17,7 @@ import Link from 'next/link'
 import Slider from 'react-slick'
 import MoreButton from '@/components/ui/more-button/MoreButton'
 import NewsContainerElement from '@/components/pages/home/news/NewsContainerElement'
+import slugify from 'slugify'
 interface IHome {
   data: IHomeQuery
 }
@@ -145,8 +146,11 @@ export default function Home({ data }: IHome) {
           )}
 
           <NewsContainer data={data.newsM.data} />
+          <div className={'flex justify-between mt-[50px]'}>
+            <h1 className={'text-2xl font-semibold mb-5'}>Layihələr</h1>
+          </div>
           <Slider
-            className={'mt-[50px]'}
+            className={''}
             slidesToShow={4}
             slidesToScroll={1}
             autoplay={true}
@@ -189,19 +193,21 @@ export default function Home({ data }: IHome) {
               )
             }}
           >
-            {data.logos.data.map(img => (
+            {data.logos.data.map(project => (
               <Link
-                href={`/logos?id=${img.id}`}
-                key={img.attributes.image.data.id}
+                href={`/logos/${
+                  slugify(project.attributes.name) + '-' + project.id
+                }`}
+                key={project.attributes.image.data.id}
               >
                 <Image
                   src={
                     process.env.SERVER_URL +
-                    img.attributes.image.data.attributes.url
+                    project.attributes.image.data.attributes.url
                   }
-                  alt={img.attributes.image.data.attributes.alternativeText}
-                  width={img.attributes.image.data.attributes.width}
-                  height={img.attributes.image.data.attributes.height}
+                  alt={project.attributes.image.data.attributes.alternativeText}
+                  width={project.attributes.image.data.attributes.width}
+                  height={project.attributes.image.data.attributes.height}
                   className={' '}
                 />
               </Link>

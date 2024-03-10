@@ -20,7 +20,6 @@ function NavbarSection({ data }: INavbarSection) {
   const [view, setView] = useState<boolean>(false)
   const { route } = useRouter()
   const { scrollY } = useScrollContext()
-
   return (
     <>
       {data.hasLink ? (
@@ -52,11 +51,13 @@ function NavbarSection({ data }: INavbarSection) {
                   <div className={'p-5'}>
                     {data.navigation_elements.map(element => {
                       if (element.status) {
+                        const years = element?.years?.split(',') || []
                         return (
                           <NavbarElement
                             url={data.path}
                             key={element.id}
                             data={element as NavigationElementType}
+                            years={years}
                           />
                         )
                       }
@@ -94,12 +95,14 @@ function NavbarSection({ data }: INavbarSection) {
                 <Dropdown>
                   <div className={'p-5'}>
                     {data.navigation_elements.map(element => {
+                      const years = element?.years?.split(',') || []
                       if (element.status) {
                         return (
                           <NavbarElement
                             url={data.path}
                             key={element.id}
                             data={element as NavigationElementType}
+                            years={years}
                           />
                         )
                       }

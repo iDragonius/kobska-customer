@@ -1,15 +1,10 @@
 import { initializeApollo } from '@/lib/graphql/apollo-client'
 
-import Image from 'next/image'
-import boardofdirectors from '@/assets/Image.jpg'
-import { useWindowSizeContext } from '@/context/providers/WindowSizeContextProvider'
-import { PurposeValuesDutiesGoalsQuery } from '@/lib/graphql/queries/purpose-values-duties-goals'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import {
   BoardOfDirectorsQuery,
   IBoardOfDirectorsQuery
 } from '@/lib/graphql/queries/board-of-directors.query'
-import { dir } from 'i18next'
 import DirectorElement from '@/components/pages/about/boardOfDirector/director-element/DirectorElement'
 import { useTranslation } from 'next-i18next'
 import { LanguagesQueryEnum } from '@/config'
@@ -18,7 +13,7 @@ import Head from 'next/head'
 export interface IBoardOfDirectors {
   data: IBoardOfDirectorsQuery
 }
-function BoardOfDirectors({ data }: IBoardOfDirectors) {
+function BoardOfDirectorsPage({ data }: IBoardOfDirectors) {
   const { t } = useTranslation('about')
   return (
     <>
@@ -52,4 +47,4 @@ export const getServerSideProps = async ({ locale }: { locale: string }) => {
     }
   }
 }
-export default BoardOfDirectors
+export default BoardOfDirectorsPage

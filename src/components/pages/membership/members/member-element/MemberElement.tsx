@@ -2,6 +2,7 @@ import styles from './MemberElement.module.scss'
 import { MemberProps } from '@/lib/graphql/queries/members.query'
 import Image from 'next/image'
 import Link from 'next/link'
+import slugify from 'slugify'
 
 export interface IMemberElement {
   data: MemberProps
@@ -10,7 +11,9 @@ export interface IMemberElement {
 function MemberElement({ data }: IMemberElement) {
   return (
     <Link
-      href={`/membership/members/${data.id}`}
+      href={`/membership/members/${
+        slugify(data.attributes.name) + '-' + data.id
+      }`}
       className={
         'relative group transition-all ease-in-out flex flex-col items-center'
       }
