@@ -1,15 +1,14 @@
-import Image from 'next/image'
+import { LanguagesQueryEnum } from '@/config'
 import { initializeApollo } from '@/lib/graphql/apollo-client'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import {
   HeadsAppealQuery,
   IHeadsAppealQuery
 } from '@/lib/graphql/queries/heads-appeal.query'
-import ReactMarkdown from 'react-markdown'
 import { useTranslation } from 'next-i18next'
-import { LanguagesQueryEnum } from '@/config'
-import React from 'react'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
+import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
 export interface IHeadsAppealPage {
   data: IHeadsAppealQuery
 }
@@ -55,7 +54,7 @@ const HeadsAppealPage = ({ data }: IHeadsAppealPage) => {
               height={
                 data.headSAppeal.data.attributes.image.data.attributes.height
               }
-              className='block float-right md:absolute md:right-0 md:bottom-0 md:mt-0  w-[347px] h-[337px] lg:w-[532px] lg:h-[516px]'
+              className='block float-right md:absolute md:right-0 md:bottom-0 md:mt-0  w-[347px] h-[337px] lg:w-[532px] lg:h-[516px] object-contain'
             />
           </div>
         </div>

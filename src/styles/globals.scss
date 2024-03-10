@@ -113,7 +113,6 @@ summary::-webkit-details-marker {
 }
 .slick-initialized .slick-track {
   display: flex;
-  align-items: center;
 }
 
 .directionSlider .slick-active > div {
@@ -121,7 +120,7 @@ summary::-webkit-details-marker {
 }
 .slick-slide > div > div {
   width: max-content !important;
-  margin: 0 auto;
+  //margin: 0 auto;
   display: block !important;
 }
 

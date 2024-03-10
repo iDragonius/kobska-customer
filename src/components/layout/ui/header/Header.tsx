@@ -8,9 +8,7 @@ import Link from 'next/link'
 import Burger from '@/assets/icons/burger.svg'
 import Close from '@/assets/icons/close.svg'
 import { useScrollContext } from '@/context/providers/ScrollContextProvider'
-import { useWindowSize } from '@/hooks/useWindowSize'
 import { useWindowSizeContext } from '@/context/providers/WindowSizeContextProvider'
-import LanguagesMobile from '@/components/ui/languages/LanguagesMobile'
 export interface IHeader {
   setOpen: (state: boolean) => void
   open: boolean

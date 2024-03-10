@@ -19,8 +19,45 @@ import ReactMarkdown from 'react-markdown'
 import { useTranslation } from 'next-i18next'
 import { LanguagesQueryEnum } from '@/config'
 import Head from 'next/head'
+import React, { useState } from 'react'
+import { Page, Document, pdfjs } from 'react-pdf'
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
+
 function Association({ data }: IAssociation) {
   const { t } = useTranslation('about')
+  const [numPages, setNumPages] = useState<number>(0)
+  const [pageNumber, setPageNumber] = useState<number>(1) // start on first page
+  const [loading, setLoading] = useState(true)
+  const [pageWidth, setPageWidth] = useState(0)
+
+  function onDocumentLoadSuccess({
+    numPages: nextNumPages
+  }: {
+    numPages: number
+  }) {
+    setNumPages(nextNumPages)
+  }
+
+  function onPageLoadSuccess() {
+    setPageWidth(window.innerWidth)
+    setLoading(false)
+  }
+
+  const options = {
+    cMapUrl: 'cmaps/',
+    cMapPacked: true,
+    standardFontDataUrl: 'standard_fonts/'
+  }
+
+  // Go to next page
+  function goToNextPage() {
+    setPageNumber(prevPageNumber => prevPageNumber + 1)
+  }
+
+  function goToPreviousPage() {
+    setPageNumber(prevPageNumber => prevPageNumber - 1)
+  }
+
   return (
     <>
       <Head>
@@ -30,7 +67,8 @@ function Association({ data }: IAssociation) {
         style={{
           backgroundImage: `url(${
             process.env.SERVER_URL +
-            (data?.aboutAssociation?.data?.attributes?.background?.data?.attributes?.url || '/')
+            (data?.aboutAssociation?.data?.attributes?.background?.data
+              ?.attributes?.url || '/')
           })`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover'
@@ -70,6 +108,42 @@ function Association({ data }: IAssociation) {
               >
                 {data?.aboutAssociation?.data?.attributes?.content}
               </ReactMarkdown>
+              <div
+                className={`flex items-center justify-between w-full  z-10 px-2`}
+              >
+                <button
+                  onClick={goToPreviousPage}
+                  disabled={pageNumber <= 1}
+                  className=''
+                >
+                  <span className=''>Əvvəlki</span>
+                </button>
+                <button
+                  onClick={goToNextPage}
+                  className=''
+                  disabled={pageNumber >= numPages!}
+                >
+                  <span className=''>Növbəti</span>
+                </button>
+              </div>
+              <Document
+                className={'border'}
+                file='http://localhost:1337/uploads/test1_aa2ba1fc74.pdf'
+                onLoadSuccess={onDocumentLoadSuccess}
+                renderMode='canvas'
+                options={options}
+              >
+                <Page
+                  key={pageNumber}
+                  pageNumber={pageNumber}
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                  onLoadSuccess={onPageLoadSuccess}
+                  onRenderError={() => setLoading(false)}
+                  width={Math.max(pageWidth * 0.534, 390)}
+                  className={'w-full'}
+                />
+              </Document>
             </div>
           </div>
         </div>
@@ -77,6 +151,7 @@ function Association({ data }: IAssociation) {
     </>
   )
 }
+
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   const apolloClient = initializeApollo()
   const res = await apolloClient.query({

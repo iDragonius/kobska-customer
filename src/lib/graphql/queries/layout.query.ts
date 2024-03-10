@@ -5,6 +5,7 @@ export type NavigationElementType = {
   label: string
   path: string
   status: boolean
+  type:'relative' | 'absolute'
 }
 export interface INavigationElement {
   id: number
@@ -62,6 +63,7 @@ export const LayoutQuery = gql`
               label
               path
               status
+              type
             }
           }
         }

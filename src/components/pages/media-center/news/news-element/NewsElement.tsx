@@ -1,11 +1,11 @@
 import { NewsQueryElementType } from '@/lib/graphql/queries/news.query'
-import styles from './NewsElement.module.scss'
-import Image from 'next/image'
 import dayjs from 'dayjs'
+import Image from 'next/image'
+import styles from './NewsElement.module.scss'
 
+import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 
 export interface INewsElement {
   data: NewsQueryElementType
@@ -20,13 +20,20 @@ const NewsElement = ({ data }: INewsElement) => {
       className={styles.newsBlock}
       href={`/media-center/news/${data.attributes.slug}`}
     >
-      <Image
-        src={serverLink + data.attributes.thumbnail.data.attributes.url}
-        height={data.attributes.thumbnail.data.attributes.height}
-        width={data.attributes.thumbnail.data.attributes.width}
-        alt={data.attributes.thumbnail.data.attributes.alternativeText}
-        style={{ width: '100%', height: '283px', objectFit: 'cover' }}
-      />
+      <div
+        className={
+          'max-h-[283px] h-full w-full border flex items-center justify-center p-1'
+        }
+      >
+        <Image
+          src={serverLink + data.attributes.thumbnail.data.attributes.url}
+          height={283}
+          width={300}
+          alt={data.attributes.thumbnail.data.attributes.alternativeText}
+          className={' max-h-[283px] h-full  object-contain '}
+          quality={15}
+        />
+      </div>
       <div className={styles.newsBlockContent}>
         <div>
           <h2 className={styles.newsBlockContentHeader}>

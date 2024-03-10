@@ -11,7 +11,10 @@ export interface INavbarElement {
 
 function NavbarElement({ data, url }: INavbarElement) {
   return (
-    <Link href={url + data.path} className={cx(styles.navigationLink)}>
+    <Link
+      href={data.type === 'relative' ? url + data.path : data.path}
+      className={cx(styles.navigationLink)}
+    >
       <Forward className={cx(styles.forward)} />
       <div className={styles.navbarElement}>
         <p>{data.label}</p>

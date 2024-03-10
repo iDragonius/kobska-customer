@@ -1,10 +1,10 @@
-import { NewsProps } from '@/lib/graphql/queries'
-import Link from 'next/link'
 import styles from '@/components/pages/media-center/news/news-element/NewsElement.module.scss'
-import Image from 'next/image'
+import { NewsProps } from '@/lib/graphql/queries'
 import dayjs from 'dayjs'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export interface INewsContainerElement {
   data: NewsProps
@@ -20,13 +20,20 @@ function NewsContainerElement({ data }: INewsContainerElement) {
       className={styles.newsBlock}
       href={`/media-center/news/${data.attributes.slug}`}
     >
-      <Image
-        src={serverLink + data?.attributes?.thumbnail?.data?.attributes?.url}
-        height={data?.attributes?.thumbnail?.data?.attributes?.height}
-        width={data?.attributes?.thumbnail?.data?.attributes?.width}
-        alt={data?.attributes?.thumbnail?.data?.attributes?.alternativeText}
-        style={{ width: '100%', height: '283px', objectFit: 'fill' }}
-      />
+      <div
+        className={
+          'max-h-[283px] h-full w-full border flex items-center justify-center p-1'
+        }
+      >
+        <Image
+          src={serverLink + data?.attributes?.thumbnail?.data?.attributes?.url}
+          height={283}
+          width={300}
+          alt={data?.attributes?.thumbnail?.data?.attributes?.alternativeText}
+          className={' max-h-[283px] h-full  object-contain '}
+        />
+      </div>
+
       <div className={styles.newsBlockContent}>
         <div>
           <h2 className={styles.newsBlockContentHeader}>

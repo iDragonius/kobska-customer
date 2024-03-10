@@ -54,6 +54,7 @@ export type HomeInfoProps = {
     video: {
       data: ImageProps[]
     }
+    videos: VideoProps[]
   }
 }
 
@@ -113,6 +114,21 @@ export interface LogosProps {
       }
     }
   }
+}
+export interface VideoProps {
+  id: string
+  name: string
+  cover: {
+    data: {
+      attributes: {
+        url: string
+        width: number
+        height: number
+        name: string
+      }
+    }
+  }
+  link: string
 }
 export interface IHomeQuery {
   homeInfo: {
@@ -199,6 +215,21 @@ export const HomeQuery = gql`
           video_title
           video_description
           video_url
+          videos {
+            id
+            name
+            cover {
+              data {
+                attributes {
+                  name
+                  width
+                  height
+                  url
+                }
+              }
+            }
+            link
+          }
         }
       }
     }
