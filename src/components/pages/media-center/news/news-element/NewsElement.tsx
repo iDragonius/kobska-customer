@@ -27,11 +27,10 @@ const NewsElement = ({ data }: INewsElement) => {
       >
         <Image
           src={serverLink + data.attributes.thumbnail.data.attributes.url}
-          height={283}
-          width={300}
+          height={1200}
+          width={1200}
           alt={data.attributes.thumbnail.data.attributes.alternativeText}
           className={' max-h-[283px] h-full  object-contain '}
-          quality={15}
         />
       </div>
       <div className={styles.newsBlockContent}>
