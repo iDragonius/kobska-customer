@@ -20,7 +20,6 @@ import { useTranslation } from 'next-i18next'
 import { LanguagesQueryEnum } from '@/config'
 import Head from 'next/head'
 import React, { useState } from 'react'
-// @ts-ignore
 import { Page, Document, pdfjs } from 'react-pdf'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
