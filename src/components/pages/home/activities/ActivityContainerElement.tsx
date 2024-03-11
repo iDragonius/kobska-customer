@@ -20,7 +20,7 @@ function ActivityContainerElement({ data, isBig }: IActivityContainerElement) {
     <>
       {isBig ? (
         <Link
-          href={`/our-activity/${data?.attributes.slug}`}
+          href={`/our-activity/news/${data?.attributes.slug}`}
           className={styles.activity}
         >
           <Image

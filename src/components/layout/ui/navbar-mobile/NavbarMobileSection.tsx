@@ -24,9 +24,11 @@ function NavbarMobileSection({ data, setOpen, open }: INavbarMobileSection) {
         ' px-[20px] sm:px-[30px] md:px-[40px] border-b border-b-[#DBE5EA] py-[15px]  cursor-pointer '
       }
       style={{ minHeight: '55px' }}
-      onClick={() => setActive(!active)}
     >
-      <div className={'flex items-center justify-between h-full '}>
+      <div
+        className={'flex items-center justify-between h-full '}
+        onClick={() => setActive(!active)}
+      >
         {data.hasLink ? (
           <Link
             href={data.path}
