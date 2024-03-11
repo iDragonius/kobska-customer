@@ -13,6 +13,7 @@ import {
 import { useTranslation } from 'next-i18next'
 import MemberElement from '@/components/pages/membership/members/member-element/MemberElement'
 import Image from 'next/image'
+import Link from 'next/link'
 interface MemberPageProps {
   data: IMemberByIdQuery
 }
@@ -55,12 +56,43 @@ const MemberPage: FC<MemberPageProps> = ({ data }) => {
                 <div className='w-full bg-loadingBg mt-5 flex items-center justify-center leading-6 text-white text-[16px] font-medium py-2'>
                   {data.member.data.attributes.member_type.data.attributes.type}
                 </div>
+                <div className={'flex gap-3 items-center mt-3'}>
+                  {data.member.data.attributes.links?.map(socialNetwork => (
+                    <Link
+                      href={socialNetwork.url}
+                      key={socialNetwork.id}
+                      className={
+                        'w-6 h-6 rounded-full bg-loadingBg flex items-center justify-center'
+                      }
+                      target={'_blank'}
+                    >
+                      <Image
+                        src={
+                          process.env.SERVER_URL +
+                          socialNetwork.icon.data.attributes.url
+                        }
+                        alt={socialNetwork.name}
+                        width={14}
+                        height={14}
+                      />
+                    </Link>
+                  ))}
+                </div>
               </div>
               <div className='ml-5'>
                 <h1 className='font-semibold text-[20px] mb-5'>
                   {data.member.data.attributes.name}
                 </h1>
                 <p>{data.member.data.attributes.description}</p>
+                <div className={'mt-4 flex gap-7'}>
+                  <div className={'font-semibold flex flex-col gap-1'}>
+                    <p>{data?.member.data.attributes.phoneNumber}</p>
+                    <p>{data?.member.data.attributes.email}</p>
+                  </div>
+                  <div className={'font-semibold'}>
+                    <p>{data?.member.data.attributes.address}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

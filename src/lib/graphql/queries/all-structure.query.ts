@@ -12,9 +12,6 @@ export const AllStructureQuery = gql`
               id
               description
               year
-              address
-              email
-              phoneNumber
               socialNetworks {
                 id
                 url

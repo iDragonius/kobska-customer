@@ -84,66 +84,6 @@ export default function Home({ data }: IHome) {
             }
           />
           <Video data={data.homeInfo.data} />
-          {data.homeInfo.data.attributes.videos.length > 0 && (
-            <div className={'mt-[50px]'}>
-              <div className={'flex justify-between'}>
-                <h1 className={'text-2xl font-semibold mb-5'}>Videolar</h1>
-              </div>
-              <Slider
-                className={''}
-                slidesToShow={
-                  data.homeInfo.data.attributes.videos.length > 2
-                    ? 3
-                    : data.homeInfo.data.attributes.videos.length
-                }
-                slidesToScroll={1}
-                autoplay={true}
-                centerMode={false}
-                autoplaySpeed={3000}
-                infinite={true}
-                responsive={[
-                  {
-                    breakpoint: 900,
-                    settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 1,
-                      arrows: false
-                    }
-                  },
-                  {
-                    breakpoint: 600,
-                    settings: {
-                      slidesToShow: 2,
-                      slidesToScroll: 1,
-                      arrows: false
-                    }
-                  }
-                ]}
-              >
-                {data.homeInfo.data.attributes.videos.map(video => (
-                  <Link
-                    href={video.link}
-                    key={video.id}
-                    className={'w-full'}
-                    target={'_blank'}
-                  >
-                    <Image
-                      src={
-                        process.env.SERVER_URL + video.cover.data.attributes.url
-                      }
-                      alt={video.cover.data.attributes.name}
-                      width={300}
-                      height={300}
-                      className={'w-full h-[283px] object-contain'}
-                    />
-                    <p className={'mt-1 text-gray-600 leading-5 text-center'}>
-                      {video.name}
-                    </p>
-                  </Link>
-                ))}
-              </Slider>
-            </div>
-          )}
 
           <NewsContainer data={data.newsM.data} />
           <div className={'flex justify-between mt-[50px]'}>
@@ -214,6 +154,67 @@ export default function Home({ data }: IHome) {
             ))}
           </Slider>
           <ActivitiesContainer data={data.activities.data} />
+          {data.homeInfo.data.attributes.videos.length > 0 && (
+            <div className={'mt-[50px]'}>
+              <div className={'flex justify-between'}>
+                <h1 className={'text-2xl font-semibold mb-5'}>Videolar</h1>
+              </div>
+              <Slider
+                className={''}
+                slidesToShow={
+                  data.homeInfo.data.attributes.videos.length > 2
+                    ? 3
+                    : data.homeInfo.data.attributes.videos.length
+                }
+                slidesToScroll={1}
+                autoplay={true}
+                centerMode={false}
+                autoplaySpeed={3000}
+                infinite={true}
+                responsive={[
+                  {
+                    breakpoint: 900,
+                    settings: {
+                      slidesToShow: 3,
+                      slidesToScroll: 1,
+                      arrows: false
+                    }
+                  },
+                  {
+                    breakpoint: 600,
+                    settings: {
+                      slidesToShow: 2,
+                      slidesToScroll: 1,
+                      arrows: false
+                    }
+                  }
+                ]}
+              >
+                {data.homeInfo.data.attributes.videos.map(video => (
+                  <Link
+                    href={video.link}
+                    key={video.id}
+                    className={'w-full'}
+                    target={'_blank'}
+                  >
+                    <Image
+                      src={
+                        process.env.SERVER_URL + video.cover.data.attributes.url
+                      }
+                      alt={video.cover.data.attributes.name}
+                      width={300}
+                      height={300}
+                      className={'w-full h-[283px] object-contain'}
+                    />
+                    <p className={'mt-1 text-gray-600 leading-5 text-center'}>
+                      {video.name}
+                    </p>
+                  </Link>
+                ))}
+              </Slider>
+            </div>
+          )}
+
           <PartnerSlider data={data.partners.data} />
         </div>
       </main>

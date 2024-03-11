@@ -13,7 +13,7 @@ export interface INavbarMobileElement {
 function NavbarMobileElement({ data, url, setOpen }: INavbarMobileElement) {
   return (
     <Link
-      href={url + data.path}
+      href={data.type === 'relative' ? url + data.path : data.path}
       onClick={() => setOpen(false)}
       className={cx(styles.navigationLink)}
     >

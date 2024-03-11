@@ -7,6 +7,9 @@ export type MemberProps = {
     name: string
     description: string
     date: string
+    email: string
+    phoneNumber: string
+    address: string
     member_type: {
       data: {
         attributes: {
@@ -24,6 +27,21 @@ export type MemberProps = {
         }
       }
     }
+    links: {
+      id: string
+      url: string
+      name: string
+      icon: {
+        data: {
+          attributes: {
+            name: string
+            url: string
+            width: number
+            height: number
+          }
+        }
+      }
+    }[]
   }
 }
 export interface IMemberQuery {

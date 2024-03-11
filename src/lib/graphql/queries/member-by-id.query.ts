@@ -18,10 +18,28 @@ export const MemberByIdQuery = gql`
           name
           description
           date
+          email
+          phoneNumber
+          address
           member_type {
             data {
               attributes {
                 type
+              }
+            }
+          }
+          links {
+            id
+            url
+            name
+            icon {
+              data {
+                attributes {
+                  url
+                  name
+                  width
+                  height
+                }
               }
             }
           }

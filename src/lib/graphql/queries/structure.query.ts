@@ -13,10 +13,8 @@ export type StructureProps = {
       }
     }
   }
-  address: string
   description: string
-  email: string
-  phoneNumber: string
+
   socialNetworks: {
     id: string
     url: string
@@ -54,9 +52,6 @@ export const StructureQuery = gql`
               id
               description
               year
-              address
-              email
-              phoneNumber
               socialNetworks {
                 id
                 url

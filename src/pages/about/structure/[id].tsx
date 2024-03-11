@@ -105,15 +105,15 @@ const StructureItemPage: FC<StructureItemPageProps> = ({ data }) => {
                 <ReactMarkdown>
                   {viewedStructure?.description || ''}
                 </ReactMarkdown>
-                <div className={'mt-4 flex gap-7'}>
-                  <div className={'font-semibold flex flex-col gap-1'}>
-                    <p>{viewedStructure?.phoneNumber}</p>
-                    <p>{viewedStructure?.email}</p>
-                  </div>
-                  <div className={'font-semibold'}>
-                    <p>{viewedStructure?.address}</p>
-                  </div>
-                </div>
+                {/*<div className={'mt-4 flex gap-7'}>*/}
+                {/*  <div className={'font-semibold flex flex-col gap-1'}>*/}
+                {/*    <p>{viewedStructure?.phoneNumber}</p>*/}
+                {/*    <p>{viewedStructure?.email}</p>*/}
+                {/*  </div>*/}
+                {/*  <div className={'font-semibold'}>*/}
+                {/*    <p>{viewedStructure?.address}</p>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
               </div>
             </div>
           </div>
