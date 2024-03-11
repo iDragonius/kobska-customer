@@ -18,7 +18,7 @@ const ActivityElement = ({ data }: IActivityElement) => {
   return (
     <Link
       className={styles.newsBlock}
-      href={`/our-activity/${data.attributes.slug}`}
+      href={`/our-activity/news/${data.attributes.slug}`}
     >
       <Image
         src={serverLink + data.attributes.thumbnail.data.attributes.url}

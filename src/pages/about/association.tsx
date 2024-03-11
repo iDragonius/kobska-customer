@@ -130,7 +130,7 @@ function Association({ data }: IAssociation) {
               </div>
               <Document
                 className={'border'}
-                file={'/presentation.pdf'}
+                file={`/presentation.pdf`}
                 onLoadSuccess={onDocumentLoadSuccess}
                 renderMode='canvas'
                 options={options}
