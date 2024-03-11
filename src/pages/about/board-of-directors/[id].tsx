@@ -123,7 +123,7 @@ const BoardOfDirectorItemPage: FC<BoardOfDirectorItemPageProps> = ({
         </div>
         <div className={'mt-[50px]'}>
           <h1 className={'text-2xl font-semibold mb-5'}>
-            Digər struktur üzvləri
+            Digər idarə heyəti üzvləri
           </h1>
           <div
             className={'grid grid-cols-1 sm:grid-cols-2 mb:grid-cols-3 gap-5'}
