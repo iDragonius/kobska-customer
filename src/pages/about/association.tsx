@@ -128,30 +128,23 @@ function Association({ data }: IAssociation) {
                   <span className=''>Növbəti</span>
                 </button>
               </div>
-              {data.aboutAssociation.data.attributes.pdf.data && (
-                <Document
-                  className={'border'}
-                  file={
-                    'https://admin.kobska.az' +
-                    data.aboutAssociation.data.attributes.pdf.data.attributes
-                      .url
-                  }
-                  onLoadSuccess={onDocumentLoadSuccess}
-                  renderMode='canvas'
-                  options={options}
-                >
-                  <Page
-                    key={pageNumber}
-                    pageNumber={pageNumber}
-                    renderAnnotationLayer={false}
-                    renderTextLayer={false}
-                    onLoadSuccess={onPageLoadSuccess}
-                    onRenderError={() => setLoading(false)}
-                    width={Math.max(pageWidth * 0.534, 390)}
-                    className={'w-full'}
-                  />
-                </Document>
-              )}
+              <Document
+                className={'border'}
+                file={'/presentation.pdf'}
+                onLoadSuccess={onDocumentLoadSuccess}
+                renderMode='canvas'
+                options={options}
+              >
+                <Page
+                  key={pageNumber}
+                  pageNumber={pageNumber}
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                  onLoadSuccess={onPageLoadSuccess}
+                  onRenderError={() => setLoading(false)}
+                  width={Math.max(pageWidth * 0.418, 390)}
+                />
+              </Document>
             </div>
           </div>
         </div>
