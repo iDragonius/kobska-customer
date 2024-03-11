@@ -1,6 +1,10 @@
 import { initializeApollo } from '@/lib/graphql/apollo-client'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { IMemberQuery, MembersQuery } from '@/lib/graphql/queries/members.query'
+import {
+  IMemberQuery,
+  MemberProps,
+  MembersQuery
+} from '@/lib/graphql/queries/members.query'
 import MemberElement from '@/components/pages/membership/members/member-element/MemberElement'
 import { LanguagesQueryEnum } from '@/config'
 import Head from 'next/head'
@@ -39,7 +43,7 @@ function MembersPage({ data }: IMembersPage) {
         >
           {membersData.data.map(el => {
             if (el.attributes.member_type?.data?.attributes?.type === 'Üzv')
-              return <MemberElement data={el} key={el.id} />
+              return <MemberElement data={el as MemberProps} key={el.id} />
           })}
         </div>
       </main>

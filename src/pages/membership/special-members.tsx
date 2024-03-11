@@ -1,7 +1,11 @@
 import MemberElement from '@/components/pages/membership/members/member-element/MemberElement'
 import { LanguagesQueryEnum } from '@/config'
 import { initializeApollo } from '@/lib/graphql/apollo-client'
-import { IMemberQuery, MembersQuery } from '@/lib/graphql/queries/members.query'
+import {
+  IMemberQuery,
+  MemberProps,
+  MembersQuery
+} from '@/lib/graphql/queries/members.query'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import React, { FC, useState } from 'react'
@@ -14,7 +18,6 @@ interface SpecialMembersPageProps {
 const SpecialMembersPage: FC<SpecialMembersPageProps> = ({ data }) => {
   const { t } = useTranslation('membership')
   const [membersData] = useState(data.members)
-  console.log(data)
   return (
     <>
       <Head>
@@ -36,7 +39,7 @@ const SpecialMembersPage: FC<SpecialMembersPageProps> = ({ data }) => {
             if (
               el.attributes.member_type?.data?.attributes?.type === 'Xüsusi üzv'
             )
-              return <MemberElement data={el} key={el.id} />
+              return <MemberElement data={el as MemberProps} key={el.id} />
           })}
         </div>
       </main>
