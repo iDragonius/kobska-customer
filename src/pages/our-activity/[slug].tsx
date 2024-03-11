@@ -6,7 +6,10 @@ import { GetServerSideProps } from 'next'
 import { initializeApollo } from '@/lib/graphql/apollo-client'
 import { LanguagesQueryEnum } from '@/config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { ActivitiesByTypeQuery } from '@/lib/graphql/queries/activities-by-type'
+import {
+  ActivitiesByTypeAndYearQuery,
+  ActivitiesByTypeQuery
+} from '@/lib/graphql/queries/activities-by-type'
 import { INewsQuery } from '@/lib/graphql/queries/news.query'
 import NewsElement from '@/components/pages/media-center/news/news-element/NewsElement'
 export interface IOurActivity {
@@ -29,14 +32,28 @@ function OurActivity({ data }: IOurActivity) {
 }
 export const getServerSideProps: GetServerSideProps = async context => {
   const apolloClient = initializeApollo()
-  const res = await apolloClient.query({
-    query: ActivitiesByTypeQuery,
-    variables: {
-      locale:
-        LanguagesQueryEnum[context.locale as keyof typeof LanguagesQueryEnum],
-      activity: context.query.slug
-    }
-  })
+  const res = context.query.year
+    ? await apolloClient.query({
+        query: ActivitiesByTypeAndYearQuery,
+        variables: {
+          locale:
+            LanguagesQueryEnum[
+              context.locale as keyof typeof LanguagesQueryEnum
+            ],
+          activity: context.query.slug,
+          year: +context.query.year
+        }
+      })
+    : await apolloClient.query({
+        query: ActivitiesByTypeQuery,
+        variables: {
+          locale:
+            LanguagesQueryEnum[
+              context.locale as keyof typeof LanguagesQueryEnum
+            ],
+          activity: context.query.slug
+        }
+      })
 
   return {
     props: {
