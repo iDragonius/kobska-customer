@@ -58,6 +58,8 @@ function Association({ data }: IAssociation) {
     setPageNumber(prevPageNumber => prevPageNumber - 1)
   }
 
+  console.log(data)
+
   return (
     <>
       <Head>
@@ -126,24 +128,30 @@ function Association({ data }: IAssociation) {
                   <span className=''>Növbəti</span>
                 </button>
               </div>
-              <Document
-                className={'border'}
-                file='https://admin.kobska.az/uploads/test1_aa2ba1fc74.pdf'
-                onLoadSuccess={onDocumentLoadSuccess}
-                renderMode='canvas'
-                options={options}
-              >
-                <Page
-                  key={pageNumber}
-                  pageNumber={pageNumber}
-                  renderAnnotationLayer={false}
-                  renderTextLayer={false}
-                  onLoadSuccess={onPageLoadSuccess}
-                  onRenderError={() => setLoading(false)}
-                  width={Math.max(pageWidth * 0.534, 390)}
-                  className={'w-full'}
-                />
-              </Document>
+              {data.aboutAssociation.data.attributes.pdf.data && (
+                <Document
+                  className={'border'}
+                  file={
+                    'https://admin.kobska.az' +
+                    data.aboutAssociation.data.attributes.pdf.data.attributes
+                      .url
+                  }
+                  onLoadSuccess={onDocumentLoadSuccess}
+                  renderMode='canvas'
+                  options={options}
+                >
+                  <Page
+                    key={pageNumber}
+                    pageNumber={pageNumber}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                    onLoadSuccess={onPageLoadSuccess}
+                    onRenderError={() => setLoading(false)}
+                    width={Math.max(pageWidth * 0.534, 390)}
+                    className={'w-full'}
+                  />
+                </Document>
+              )}
             </div>
           </div>
         </div>

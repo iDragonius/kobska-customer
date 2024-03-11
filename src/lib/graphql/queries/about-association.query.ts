@@ -6,6 +6,14 @@ export interface IAboutAssociationQuery {
       id: number
       attributes: {
         content: string
+        pdf: {
+          data: {
+            attributes: {
+              url: string
+              name: string
+            }
+          }
+        }
         background: {
           data: {
             attributes: {
@@ -27,6 +35,14 @@ export const AboutAssociationQuery = gql`
         id
         attributes {
           content
+          pdf {
+            data {
+              attributes {
+                url
+                name
+              }
+            }
+          }
           background {
             data {
               attributes {
