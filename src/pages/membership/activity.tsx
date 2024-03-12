@@ -31,7 +31,7 @@ const ActivityPage: FC<ActivityPageProps> = ({ data }) => {
         <h1 className={'font-semibold text-2xl  mb-5'}>{t('activities')}</h1>
         <div className={'grid grid-cols-1 sm:grid-cols-2 mb:grid-cols-3 gap-5'}>
           {activitiesData.activities.data.map(activity => {
-            if (activity.attributes.type === 'advertisements') {
+            if (activity.attributes.type === 'news') {
               return (
                 <ActivityElement
                   key={activity.attributes.slug}
