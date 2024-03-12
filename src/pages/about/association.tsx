@@ -20,9 +20,11 @@ import { useTranslation } from 'next-i18next'
 import { LanguagesQueryEnum } from '@/config'
 import Head from 'next/head'
 import React, { useState } from 'react'
-import { Page, Document, pdfjs } from 'react-pdf'
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'
+import { Viewer, Worker } from '@react-pdf-viewer/core'
 
+import '@react-pdf-viewer/core/lib/styles/index.css'
+import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 function Association({ data }: IAssociation) {
   const { t } = useTranslation('about')
   const [numPages, setNumPages] = useState<number>(0)
@@ -59,6 +61,7 @@ function Association({ data }: IAssociation) {
   }
 
   console.log(data)
+  const defaultLayoutPluginInstance = defaultLayoutPlugin()
 
   return (
     <>
@@ -110,41 +113,22 @@ function Association({ data }: IAssociation) {
               >
                 {data?.aboutAssociation?.data?.attributes?.content}
               </ReactMarkdown>
-              <div
-                className={`flex items-center justify-between w-full  z-10 px-2`}
-              >
-                <button
-                  onClick={goToPreviousPage}
-                  disabled={pageNumber <= 1}
-                  className=''
+
+              <Worker workerUrl='https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.js'>
+                <div
+                  style={{
+                    height: '750px',
+                    width: '100%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto'
+                  }}
                 >
-                  <span className=''>Əvvəlki</span>
-                </button>
-                <button
-                  onClick={goToNextPage}
-                  className=''
-                  disabled={pageNumber >= numPages!}
-                >
-                  <span className=''>Növbəti</span>
-                </button>
-              </div>
-              <Document
-                className={'border'}
-                file={`/presentation.pdf`}
-                onLoadSuccess={onDocumentLoadSuccess}
-                renderMode='canvas'
-                options={options}
-              >
-                <Page
-                  key={pageNumber}
-                  pageNumber={pageNumber}
-                  renderAnnotationLayer={false}
-                  renderTextLayer={false}
-                  onLoadSuccess={onPageLoadSuccess}
-                  onRenderError={() => setLoading(false)}
-                  width={Math.max(pageWidth * 0.418, 390)}
-                />
-              </Document>
+                  <Viewer
+                    fileUrl='/presentation.pdf'
+                    plugins={[defaultLayoutPluginInstance]}
+                  />
+                </div>
+              </Worker>
             </div>
           </div>
         </div>
