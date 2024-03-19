@@ -8,7 +8,7 @@
   @apply p-5 border border-[#EEEEEE]  transition-all ease-in-out h-[calc(100%-283px)] flex flex-col justify-between;
 }
 .newsBlockContentHeader {
-  @apply font-medium text-lg text-newsText mb-5;
+  @apply font-medium text-lg text-newsText mb-5 line-clamp-2;
 }
 .newsBlockContentWrapper {
   @apply flex justify-between items-center;

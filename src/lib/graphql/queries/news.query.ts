@@ -37,11 +37,17 @@ export interface INewsQuery {
 }
 
 export const NewsQuery = gql`
-  query ($locale: I18NLocaleCode!, $pageSize: Int!, $page: Int!) {
+  query (
+    $locale: I18NLocaleCode!
+    $pageSize: Int!
+    $page: Int!
+    $search: String!
+  ) {
     newsM(
       sort: "position_id:asc,date:desc"
       locale: $locale
       pagination: { pageSize: $pageSize, page: $page }
+      filters: { title: { containsi: $search } }
     ) {
       data {
         attributes {
