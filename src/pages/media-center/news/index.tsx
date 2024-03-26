@@ -5,7 +5,7 @@ import { INewsQuery, NewsQuery } from '@/lib/graphql/queries/news.query'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import NewsElement from '@/components/pages/media-center/news/news-element/NewsElement'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Head from 'next/head'
 import { useLazyQuery, useQuery } from '@apollo/client'
 import { GetServerSideProps } from 'next'
@@ -29,9 +29,10 @@ const NewsPage = ({ data }: INewsPage) => {
       pageSize: 20,
       page: 1,
       search: debounceValue[0] || ''
-    }
+    },
+    skip: search.length === 0
   })
-
+  console.log(searchedNewsData)
   return (
     <>
       <Head>
@@ -51,7 +52,10 @@ const NewsPage = ({ data }: INewsPage) => {
           />
         </div>
         <div className={'grid grid-cols-1 sm:grid-cols-2 mb:grid-cols-3 gap-5'}>
-          {(searchedNewsData ?? newsData).newsM.data.map(newsElement => (
+          {(searchedNewsData?.newsM?.data
+            ? searchedNewsData
+            : newsData
+          ).newsM.data.map(newsElement => (
             <NewsElement key={newsElement.attributes.slug} data={newsElement} />
           ))}
         </div>

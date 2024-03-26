@@ -20,9 +20,14 @@ export interface IPagination {
   }
   setData: (data: INewsQuery & IActivitiesQuery) => void
   getData: ({
-    variables: { locale, pageSize, page }
+    variables: { locale, pageSize, page, search }
   }: {
-    variables: { locale: LanguagesQueryEnum; pageSize: number; page: number }
+    variables: {
+      locale: LanguagesQueryEnum
+      pageSize: number
+      page: number
+      search: string
+    }
   }) => Promise<{ data: INewsQuery & IActivitiesQuery }>
 }
 const Pagination = ({ data, setData, getData }: IPagination) => {
@@ -72,7 +77,8 @@ const Pagination = ({ data, setData, getData }: IPagination) => {
                   pageSize: query.pageSize
                     ? +query.pageSize
                     : PaginationData.pageSize,
-                  page: data.pagination.page - 1
+                  page: data.pagination.page - 1,
+                  search: ''
                 }
               }).then(res => setData(res.data))
               push(asPath, {
@@ -111,9 +117,12 @@ const Pagination = ({ data, setData, getData }: IPagination) => {
                     pageSize: query.pageSize
                       ? +query.pageSize
                       : PaginationData.pageSize,
-                    page: +(e.target as Element).innerHTML
+                    page: +(e.target as Element).innerHTML,
+                    search: ''
                   }
-                }).then(res => setData(res.data))
+                }).then(res => {
+                  setData(res.data)
+                })
                 push(asPath, {
                   query: {
                     pageSize: query.pageSize
@@ -153,7 +162,8 @@ const Pagination = ({ data, setData, getData }: IPagination) => {
                   pageSize: query.pageSize
                     ? +query.pageSize
                     : PaginationData.pageSize,
-                  page: data.pagination.page + 1
+                  page: data.pagination.page + 1,
+                  search: ''
                 }
               }).then(res => setData(res.data))
               push(asPath, {
