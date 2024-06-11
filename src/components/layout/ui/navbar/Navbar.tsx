@@ -3,6 +3,7 @@ import styles from './Navbar.module.scss'
 import NavbarSection from '@/components/layout/ui/navbar/NavbarSection'
 import cx from 'classnames'
 import NavbarLoading from '@/components/ui/loading/navbarLoading/NavbarLoading'
+import Languages from '@/components/layout/ui/navbar/languages'
 export interface INavbar {
   loading: boolean
   data: Pick<ILayoutQuery, 'navigationMenu'>
@@ -21,6 +22,7 @@ function Navbar({ loading, data }: INavbar) {
             return <NavbarSection data={navigation} key={navigation.id} />
           }
         })}
+        <Languages />
       </div>
     </div>
   )

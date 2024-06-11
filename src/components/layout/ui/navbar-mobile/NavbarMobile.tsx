@@ -41,9 +41,8 @@ function NavbarMobile({ loading, data, open, setOpen }: INavbarMobile) {
             open={open}
           />
         ))}
-        {process.env.LANGUAGE_MODE === 'multi' && (
-          <LanguagesMobile setOpen={setOpen} />
-        )}
+
+        <LanguagesMobile setOpen={setOpen} />
       </div>
     </div>
   )
