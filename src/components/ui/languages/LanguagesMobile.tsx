@@ -69,7 +69,7 @@ function LanguagesMobile({ setOpen }: ILanguagesMobile) {
         className={'flex justify-between items-center cursor-pointer'}
         onClick={() => setActive(!active)}
       >
-        <p className={'text-base font-medium  '}>Dilini dəyişdirmək</p>
+        <p className={'text-base font-medium  '}>Dil</p>
         <Drop
           style={{ stroke: '#A0A0A0' }}
           className={active ? 'rotate-180' : ''}
