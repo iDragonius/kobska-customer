@@ -49,6 +49,8 @@ function LanguagesMobile({ setOpen }: ILanguagesMobile) {
       'google_translate_element'
     )
   }
+
+  const test = 1
   const langChange = (e: string) => {
     if (hasCookie('googtrans')) {
       setCookie('googtrans', decodeURI(e))
