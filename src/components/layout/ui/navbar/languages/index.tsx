@@ -7,6 +7,7 @@ import cx from 'classnames'
 import styles from '../Navbar.module.scss'
 import Drop from '@/assets/icons/drop.svg'
 import { useOnClickOutside } from 'usehooks-ts'
+import Link from 'next/link'
 export interface LanguagesProps {}
 
 const Languages: FC<LanguagesProps> = () => {
@@ -200,7 +201,9 @@ const Languages: FC<LanguagesProps> = () => {
       {isShown && (
         <div className={'absolute bg-white w-full border mt-1 '}>
           {languages?.map(lc => (
-            <div
+            <Link
+              href={'/'}
+              target={'_blank'}
               translate={'no'}
               className={clsx(
                 route === '/' && scrollY === 0 ? '' : '',
@@ -213,7 +216,7 @@ const Languages: FC<LanguagesProps> = () => {
             >
               {lc.icon}
               {lc.label}
-            </div>
+            </Link>
           ))}
         </div>
       )}
